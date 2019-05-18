@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    <hr>
+    <form action="/user/login" method="POST">
+    <div id="input">
+        <span id="label">아이디</span>
+        <input type="text"  name="userid">
+    </div>
+    <div id="input">
+        <span id="label">PASS</span>
+        <input type="text" name="userpass">
+    </div>
+    <hr>
+    <div id="input">
+        <button id="ajax" onclick="click2()">로그인</button>
+    </div>
+
+
+        <script>
+            function click2() {
+
+
+                alert("pass")
+
+                 $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "/user/login",
+                    success: function(data){
+                        if(data.result_code==200){
+                            document.location.href = '/Web/main';
+                        }
+                    }
+                });
+
+
+            }
+        </script>
+</form>
+</body>
+</html>

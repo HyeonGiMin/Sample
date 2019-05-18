@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css" />
+<script src="js/jquery.js"></script>
+    <script>
+    $(function() {
+          var $frm = $(".login_f");
+         $frm.on("submit", function(e) {
+          e.preventDefault();
+         var myData = $frm.serialize();
+
+     var RestPut=function(){
+        $.ajax({
+        type: "PUT",
+        url: "/user/update/newpass"+userid+newpass,
+        data: {userid:user_id,newpass:newpass},
+        success:function(res) {
+            if(res) {
+            var jsonData = JSON.parse(res);
+            var message = jsonData.user_name + 
+            "( " + jsonData.user_id + " )" 
+            + "님 반갑습니다";
+            $(".login_wrap").html(message);
+            }
+        }
+        });
+     }  
+  });
+});
+    </script>
+</head>
+<body>
+<div class="login_wrap">
+    <h2>비밀번호 변경</h2>
+    <hr>
+    <form action="/user/update/"+userid+userpass method="POST">
+    <div id="input">
+        <span id="label">아이디</span>
+        <input type="text", name="userid">
+    </div>
+    <div id="input">
+        <span id="label">PASS</span>
+        <input type="text", name="userpass">
+    </div>
+    <hr>
+    <div id="input">
+        <input type="button"  onclick='RestPut()' , value="수정">
+    </div>
+</div>
+</body>
+</html>

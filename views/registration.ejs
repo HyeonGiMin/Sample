@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="login_wrap">
+    <h2>회원가입</h2>
+    <hr>
+    <div id="input">
+        <span id="label">아이디</span>
+        <input type="text", name="userid">
+    </div>
+    <div id="input">
+        <span id="label">비밀번호</span>
+        <input type="text", name="userpass">
+    </div>
+    <div id="input">
+        <span id="label">이름</span>
+        <input type="text", name="username">
+    </div>
+    <div id="input">
+        <span id="label">연락처</span>
+        <input type="text", name="userphone">
+    </div>
+    <div id="input">
+        <span id="label">나이</span>
+        <input type="text", name="userage">
+    </div>
+    <div id="input">
+        <span id="label">성별</span>
+        <input type="text", name="usersex">
+    </div>
+    <hr>
+    <div id="input">
+        <button id="btn" onclick="onClick()">회원가입</button>
+    </div>
+    <script>
+        function onClick(){
+
+            let userid=$('input[name=userid]').val()
+            let userpass=$('input[name=userpass]').val()
+            let username=$('input[name=username]').val()
+            let userphone=$('input[name=userphone]').val()
+            let userage=$('input[name=userage]').val()
+            let usersex=$('input[name=usersex]').val()
+
+            var object={
+                "userid":userid,
+                "userpass":userpass,
+                "username":username,
+                "userphone":userphone,
+                "userage":userage,
+                "usersex":usersex
+
+            }
+
+
+            alert("HELLO")
+            var url="/user/registration"
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data : JSON.stringify(object),
+                url: url,
+                success: function(){
+                    alert("회원가입이 완료되었습니다.")
+                    document.location.href = '/';
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

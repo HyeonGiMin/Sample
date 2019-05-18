@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="login_wrap">
+    <h2>비밀번호 변경</h2>
+    <hr>
+    <div id="input">
+        <span id="label">아이디</span>
+        <input type="text", name="userid">
+    </div>
+    <div id="input">
+        <span id="label">PASS</span>
+        <input type="text", name="userpass">
+    </div>
+    <hr>
+    <div id="input">
+        <button id="btn" onclick="onClick()">데이터 요청하기</button>
+    </div>
+    <script>
+      function onClick(){
+
+          let userid=$('input[name=userid]').val()
+          let newpass=$('input[name=userpass]').val()
+
+              alert("HELLO")
+          var url="/user/update/userpass/"+userid+"/"+newpass
+              $.ajax({
+                  type: "PUT",
+                  dataType: "json",
+                  url: url,
+                  success: function(){
+                      alert("비밀번호 변경이 완료되었습니다.")
+                  }
+              });
+          }
+    </script>
+</div>
+</body>
+</html>

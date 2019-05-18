@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="session" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/../../../../Study/git/embedded/Server/node_modules/express-session" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../Study/git/embedded/Server/node_modules/express-session" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
